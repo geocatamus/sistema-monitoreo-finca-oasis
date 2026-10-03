@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Monitoreo — Finca El Oasis | UNAD</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+    <script type="module" src="app.js"></script>
+</head>
+<body>
+    <header>
+        <h1>🌿 Sistema de Monitoreo — Finca El Oasis</h1>
+        <p class="subtitulo">
+            Cultivo de plantas medicinales tradicionales · Mondomo, Cauca ·
+            Caserío El Turco · Proyecto UNAD
+        </p>
+        <div class="creditos">
+            Diseñado por <strong>Ing. Geovanny Catamuscay</strong>
+            · <a href="mailto:geocatamus@gmail.com">geocatamus@gmail.com</a>
+        </div>
+    </header>
+
+    <section class="selector-section">
+        <h2>🎛️ Selecciona el nodo</h2>
+        <div class="selector-nodos">
+            <button class="btn-nodo active" data-nodo="ambiental1">
+                🌡️ Ambiental 1
+            </button>
+            <button class="btn-nodo" data-nodo="suelo1">
+                🌱 Suelo 1 (7-en-1)
+            </button>
+        </div>
+    </section>
+
+    <div id="panel-ambiental1" class="panel-nodo active">
+        <section>
+            <h2>📊 Última lectura — Ambiental 1</h2>
+            <div class="dashboard">
+                <div class="card"><h3>Temperatura</h3><p id="amb-temp">--</p></div>
+                <div class="card"><h3>Humedad</h3><p id="amb-hum">--</p></div>
+                <div class="card"><h3>Presión</h3><p id="amb-pres">--</p></div>
+                <div class="card"><h3>UV</h3><p id="amb-uv">--</p></div>
+                <div class="card"><h3>RSSI</h3><p id="amb-rssi">--</p></div>
+                <div class="card"><h3>SNR</h3><p id="amb-snr">--</p></div>
+                <div class="card"><h3>Paquetes</h3><p id="amb-cnt">--</p></div>
+                <div class="card"><h3>Timestamp</h3><p id="amb-ts">--</p></div>
+            </div>
+        </section>
+
+        <section>
+            <h2>📈 Evolución temporal — Ambiental 1</h2>
+            <div class="chart-container">
+                <canvas id="chart-ambiental"></canvas>
+            </div>
+        </section>
+
+        <section>
+            <h2>📥 Descargar datos — Ambiental 1</h2>
+            <div class="descarga-container">
+                <button id="btn-csv-amb" class="btn-descarga">Descargar CSV</button>
+                <button id="btn-json-amb" class="btn-descarga">Descargar JSON</button>
+                <p id="info-amb" class="descarga-info"></p>
+            </div>
+        </section>
+
+        <section>
+            <h2>ℹ️ Información del nodo</h2>
+            <div class="meta-card">
+                <p><strong>Tipo:</strong> <span id="amb-meta-tipo">--</span></p>
+                <p><strong>Ubicación:</strong> <span id="amb-meta-ubicacion">--</span></p>
+                <p><strong>Estado:</strong> <span id="amb-meta-estado">--</span></p>
+                <p><strong>Batería:</strong> <span id="amb-meta-bateria">--</span></p>
+                <p><strong>Firmware:</strong> <span id="amb-meta-firmware">--</span></p>
+                <p><strong>RSSI promedio:</strong> <span id="amb-meta-rssi">--</span></p>
+                <p><strong>SNR promedio:</strong> <span id="amb-meta-snr">--</span></p>
+                <p><strong>Última comunicación:</strong> <span id="amb-meta-ultima">--</span></p>
+            </div>
+        </section>
+    </div>
+
+    <div id="panel-suelo1" class="panel-nodo">
+        <section>
+            <h2>📊 Última lectura — Suelo 1 (7-en-1)</h2>
+            <div class="dashboard">
+                <div class="card"><h3>Humedad suelo</h3><p id="sue-hum">--</p></div>
+                <div class="card"><h3>Temp suelo</h3><p id="sue-temp">--</p></div>
+                <div class="card"><h3>pH</h3><p id="sue-ph">--</p></div>
+                <div class="card"><h3>EC</h3><p id="sue-ec">--</p></div>
+                <div class="card"><h3>Nitrógeno</h3><p id="sue-n">--</p></div>
+                <div class="card"><h3>Fósforo</h3><p id="sue-p">--</p></div>
+                <div class="card"><h3>Potasio</h3><p id="sue-k">--</p></div>
+                <div class="card"><h3>RSSI</h3><p id="sue-rssi">--</p></div>
+            </div>
+        </section>
+
+        <section>
+            <h2>📈 Evolución temporal — Suelo 1</h2>
+            <div class="chart-container">
+                <canvas id="chart-suelo"></canvas>
+            </div>
+        </section>
+
+        <section>
+            <h2>📥 Descargar datos — Suelo 1</h2>
+            <div class="descarga-container">
+                <button id="btn-csv-sue" class="btn-descarga">Descargar CSV</button>
+                <button id="btn-json-sue" class="btn-descarga">Descargar JSON</button>
+                <p id="info-sue" class="descarga-info"></p>
+            </div>
+        </section>
+
+        <section>
+            <h2>ℹ️ Información del nodo</h2>
+            <div class="meta-card">
+                <p><strong>Tipo:</strong> <span id="sue-meta-tipo">--</span></p>
+                <p><strong>Ubicación:</strong> <span id="sue-meta-ubicacion">--</span></p>
+                <p><strong>Estado:</strong> <span id="sue-meta-estado">--</span></p>
+                <p><strong>Batería:</strong> <span id="sue-meta-bateria">--</span></p>
+                <p><strong>Firmware:</strong> <span id="sue-meta-firmware">--</span></p>
+                <p><strong>RSSI promedio:</strong> <span id="sue-meta-rssi">--</span></p>
+                <p><strong>SNR promedio:</strong> <span id="sue-meta-snr">--</span></p>
+                <p><strong>Última comunicación:</strong> <span id="sue-meta-ultima">--</span></p>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p>Proyecto académico UNAD · Finca El Oasis · Mondomo, Cauca</p>
+        <p class="creditos-footer">
+            Diseñado por <strong>Ing. Geovanny Catamuscay</strong> ·
+            <a href="mailto:geocatamus@gmail.com">geocatamus@gmail.com</a>
+        </p>
+    </footer>
+</body>
+</html>
